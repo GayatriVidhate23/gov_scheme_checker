@@ -1,0 +1,414 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix scheme: <http://schemes.gov.in/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+scheme:Category a rdfs:Class .
+
+scheme:Occupation a rdfs:Class .
+
+scheme:Scheme a rdfs:Class .
+
+scheme:State a rdfs:Class .
+
+scheme:applicableInState a rdf:Property .
+
+scheme:applicationProcess a rdf:Property .
+
+scheme:benefits a rdf:Property .
+
+scheme:documentsRequired a rdf:Property .
+
+scheme:hasBenefit a rdf:Property .
+
+scheme:hasCategory a rdf:Property .
+
+scheme:hasDocument a rdf:Property .
+
+scheme:incomeLimit a rdf:Property .
+
+scheme:maxAge a rdf:Property .
+
+scheme:minAge a rdf:Property .
+
+scheme:officialWebsite a rdf:Property .
+
+scheme:requiresGender a rdf:Property .
+
+scheme:requiresOccupation a rdf:Property .
+
+scheme:schemeId a rdf:Property .
+
+scheme:schemeName a rdf:Property .
+
+scheme:scheme_1 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Apply online through PM-KISAN portal or visit nearest CSC" ;
+    scheme:benefits "Financial assistance of Rs 6000 per year in three installments" ;
+    scheme:documentsRequired "Aadhaar Card|Land Records|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Agriculture ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://pmkisan.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Farmer ;
+    scheme:schemeId 1 ;
+    scheme:schemeName "Pradhan Mantri Kisan Samman Nidhi" .
+
+scheme:scheme_10 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Apply through school or education department" ;
+    scheme:benefits "Cash incentive for girl students to continue education" ;
+    scheme:documentsRequired "Aadhaar Card|School Enrollment Certificate|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Education ;
+    scheme:incomeLimit 200000 ;
+    scheme:maxAge 18 ;
+    scheme:minAge 14 ;
+    scheme:officialWebsite "https://wcd.nic.in" ;
+    scheme:requiresGender "Female" ;
+    scheme:requiresOccupation scheme:occupation_Student ;
+    scheme:schemeId 10 ;
+    scheme:schemeName "National Scheme for Incentive to Girls for Secondary Education" .
+
+scheme:scheme_11 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Apply through National Scholarship Portal" ;
+    scheme:benefits "Financial assistance for SC students pursuing higher education" ;
+    scheme:documentsRequired "Aadhaar Card|Caste Certificate|Income Certificate|Admission Proof" ;
+    scheme:hasCategory scheme:category_Education ;
+    scheme:incomeLimit 250000 ;
+    scheme:maxAge 30 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://scholarships.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Student ;
+    scheme:schemeId 11 ;
+    scheme:schemeName "Post Matric Scholarship for SC Students" .
+
+scheme:scheme_12 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Register on apprenticeship portal" ;
+    scheme:benefits "Stipend during apprenticeship training period" ;
+    scheme:documentsRequired "Aadhaar Card|Educational Certificate|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Skill_Development ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 35 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://apprenticeshipindia.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Youth ;
+    scheme:schemeId 12 ;
+    scheme:schemeName "National Apprenticeship Promotion Scheme" .
+
+scheme:scheme_13 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Register on Startup India portal" ;
+    scheme:benefits "Tax exemptions and funding support for startups" ;
+    scheme:documentsRequired "Aadhaar Card|PAN Card|Business Registration|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Entrepreneurship ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://www.startupindia.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Entrepreneur ;
+    scheme:schemeId 13 ;
+    scheme:schemeName "Startup India Scheme" .
+
+scheme:scheme_14 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Apply at nearest Anganwadi center" ;
+    scheme:benefits "Cash incentive of Rs 5000 for pregnant and lactating mothers" ;
+    scheme:documentsRequired "Aadhaar Card|Pregnancy Certificate|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Maternity ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 45 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://wcd.nic.in" ;
+    scheme:requiresGender "Female" ;
+    scheme:schemeId 14 ;
+    scheme:schemeName "Pradhan Mantri Matru Vandana Yojana" .
+
+scheme:scheme_15 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Open account through any bank" ;
+    scheme:benefits "Guaranteed pension between Rs 1000 to Rs 5000 after 60 years" ;
+    scheme:documentsRequired "Aadhaar Card|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Pension ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 40 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://npscra.nsdl.co.in" ;
+    scheme:requiresGender "All" ;
+    scheme:schemeId 15 ;
+    scheme:schemeName "Atal Pension Yojana" .
+
+scheme:scheme_16 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_Maharashtra ;
+    scheme:applicationProcess "Apply through district agriculture office" ;
+    scheme:benefits "Annual financial assistance of Rs 6000" ;
+    scheme:documentsRequired "Aadhaar Card|Land Records|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Agriculture ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://maharashtra.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Farmer ;
+    scheme:schemeId 16 ;
+    scheme:schemeName "Maharashtra Shetakari Sanman Yojana" .
+
+scheme:scheme_17 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_Tamil_Nadu ;
+    scheme:applicationProcess "Automatic distribution through schools" ;
+    scheme:benefits "Free laptops for higher secondary students" ;
+    scheme:documentsRequired "Aadhaar Card|School Certificate|Income Certificate" ;
+    scheme:hasCategory scheme:category_Education ;
+    scheme:incomeLimit 200000 ;
+    scheme:maxAge 25 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://tn.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Student ;
+    scheme:schemeId 17 ;
+    scheme:schemeName "Tamil Nadu Free Laptop Scheme" .
+
+scheme:scheme_18 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_Kerala ;
+    scheme:applicationProcess "Apply at local Panchayat office" ;
+    scheme:benefits "Monthly pension of Rs 1200" ;
+    scheme:documentsRequired "Aadhaar Card|Work Certificate|Income Certificate|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Social_Security ;
+    scheme:incomeLimit 100000 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 60 ;
+    scheme:officialWebsite "https://kerala.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Agricultural_Worker ;
+    scheme:schemeId 18 ;
+    scheme:schemeName "Kerala Pension for Agriculture Workers" .
+
+scheme:scheme_19 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_Gujarat ;
+    scheme:applicationProcess "Apply through district women welfare office" ;
+    scheme:benefits "Financial assistance for girl child education and marriage" ;
+    scheme:documentsRequired "Birth Certificate|Aadhaar Card|Income Certificate|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Women_Empowerment ;
+    scheme:incomeLimit 200000 ;
+    scheme:maxAge 18 ;
+    scheme:minAge 0 ;
+    scheme:officialWebsite "https://gujarat.gov.in" ;
+    scheme:requiresGender "Female" ;
+    scheme:schemeId 19 ;
+    scheme:schemeName "Gujarat Vahli Dikri Yojana" .
+
+scheme:scheme_2 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Visit nearest bank branch with required documents" ;
+    scheme:benefits "Credit facility up to Rs 3 lakh at concessional interest rates" ;
+    scheme:documentsRequired "Aadhaar Card|Land Records|Bank Account Details|Passport Photo" ;
+    scheme:hasCategory scheme:category_Agriculture ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://www.nabard.org" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Farmer ;
+    scheme:schemeId 2 ;
+    scheme:schemeName "Kisan Credit Card Scheme" .
+
+scheme:scheme_20 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_Rajasthan ;
+    scheme:applicationProcess "Apply at nearest health center" ;
+    scheme:benefits "Cash assistance for pregnant women for nutrition" ;
+    scheme:documentsRequired "Aadhaar Card|Pregnancy Certificate|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Maternity ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 45 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://rajasthan.gov.in" ;
+    scheme:requiresGender "Female" ;
+    scheme:schemeId 20 ;
+    scheme:schemeName "Rajasthan Indira Gandhi Matritva Poshan Yojana" .
+
+scheme:scheme_3 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Register on Maandhan portal and complete KYC" ;
+    scheme:benefits "Monthly pension after 60 years with contribution-based benefits" ;
+    scheme:documentsRequired "Aadhaar Card|PAN Card|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Social_Security ;
+    scheme:incomeLimit 200000 ;
+    scheme:maxAge 60 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://maandhan.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Trader ;
+    scheme:schemeId 3 ;
+    scheme:schemeName "National Pension Scheme for Traders" .
+
+scheme:scheme_4 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Apply through participating banks and financial institutions" ;
+    scheme:benefits "Loans up to Rs 10 lakh for micro enterprises" ;
+    scheme:documentsRequired "Aadhaar Card|PAN Card|Business Plan|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Business ;
+    scheme:incomeLimit 1000000 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://www.mudra.org.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Entrepreneur ;
+    scheme:schemeId 4 ;
+    scheme:schemeName "Pradhan Mantri Mudra Yojana" .
+
+scheme:scheme_5 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Contact State Rural Livelihood Mission office" ;
+    scheme:benefits "Skill training and financial assistance for self-employment" ;
+    scheme:documentsRequired "Aadhaar Card|Income Certificate|Residence Proof" ;
+    scheme:hasCategory scheme:category_Rural_Development ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://nrlm.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Rural_Resident ;
+    scheme:schemeId 5 ;
+    scheme:schemeName "National Rural Livelihood Mission" .
+
+scheme:scheme_6 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Check eligibility and get card from nearest health center" ;
+    scheme:benefits "Health insurance coverage up to Rs 5 lakh per family per year" ;
+    scheme:documentsRequired "Aadhaar Card|Ration Card|Income Certificate" ;
+    scheme:hasCategory scheme:category_Healthcare ;
+    scheme:incomeLimit 500000 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 0 ;
+    scheme:officialWebsite "https://pmjay.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:schemeId 6 ;
+    scheme:schemeName "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana" .
+
+scheme:scheme_7 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Apply through nearest Anganwadi or women welfare office" ;
+    scheme:benefits "Educational support and awareness for girl child welfare" ;
+    scheme:documentsRequired "Birth Certificate|Aadhaar Card|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Women_Empowerment ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 18 ;
+    scheme:minAge 0 ;
+    scheme:officialWebsite "https://wcd.nic.in" ;
+    scheme:requiresGender "Female" ;
+    scheme:schemeId 7 ;
+    scheme:schemeName "Beti Bachao Beti Padhao" .
+
+scheme:scheme_8 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Apply online through PMAY portal or nearest CSC" ;
+    scheme:benefits "Subsidy for purchasing or constructing houses" ;
+    scheme:documentsRequired "Aadhaar Card|Income Certificate|Property Documents|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Housing ;
+    scheme:incomeLimit 1800000 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 21 ;
+    scheme:officialWebsite "https://pmaymis.gov.in" ;
+    scheme:requiresGender "All" ;
+    scheme:schemeId 8 ;
+    scheme:schemeName "Pradhan Mantri Awas Yojana" .
+
+scheme:scheme_9 a scheme:Scheme ;
+    scheme:applicableInState scheme:state_All_States ;
+    scheme:applicationProcess "Apply at local Gram Panchayat office" ;
+    scheme:benefits "100 days of guaranteed wage employment in a financial year" ;
+    scheme:documentsRequired "Aadhaar Card|Job Card|Bank Account Details" ;
+    scheme:hasCategory scheme:category_Employment ;
+    scheme:incomeLimit 0 ;
+    scheme:maxAge 100 ;
+    scheme:minAge 18 ;
+    scheme:officialWebsite "https://nrega.nic.in" ;
+    scheme:requiresGender "All" ;
+    scheme:requiresOccupation scheme:occupation_Rural_Resident ;
+    scheme:schemeId 9 ;
+    scheme:schemeName "Mahatma Gandhi National Rural Employment Guarantee" .
+
+scheme:category_Business a scheme:Category ;
+    rdfs:label "Business" .
+
+scheme:category_Employment a scheme:Category ;
+    rdfs:label "Employment" .
+
+scheme:category_Entrepreneurship a scheme:Category ;
+    rdfs:label "Entrepreneurship" .
+
+scheme:category_Healthcare a scheme:Category ;
+    rdfs:label "Healthcare" .
+
+scheme:category_Housing a scheme:Category ;
+    rdfs:label "Housing" .
+
+scheme:category_Pension a scheme:Category ;
+    rdfs:label "Pension" .
+
+scheme:category_Rural_Development a scheme:Category ;
+    rdfs:label "Rural Development" .
+
+scheme:category_Skill_Development a scheme:Category ;
+    rdfs:label "Skill Development" .
+
+scheme:occupation_Agricultural_Worker a scheme:Occupation ;
+    rdfs:label "Agricultural Worker" .
+
+scheme:occupation_Trader a scheme:Occupation ;
+    rdfs:label "Trader" .
+
+scheme:occupation_Youth a scheme:Occupation ;
+    rdfs:label "Youth" .
+
+scheme:state_Gujarat a scheme:State ;
+    rdfs:label "Gujarat" .
+
+scheme:state_Kerala a scheme:State ;
+    rdfs:label "Kerala" .
+
+scheme:state_Maharashtra a scheme:State ;
+    rdfs:label "Maharashtra" .
+
+scheme:state_Rajasthan a scheme:State ;
+    rdfs:label "Rajasthan" .
+
+scheme:state_Tamil_Nadu a scheme:State ;
+    rdfs:label "Tamil Nadu" .
+
+scheme:category_Maternity a scheme:Category ;
+    rdfs:label "Maternity" .
+
+scheme:category_Social_Security a scheme:Category ;
+    rdfs:label "Social Security" .
+
+scheme:category_Women_Empowerment a scheme:Category ;
+    rdfs:label "Women Empowerment" .
+
+scheme:occupation_Entrepreneur a scheme:Occupation ;
+    rdfs:label "Entrepreneur" .
+
+scheme:occupation_Rural_Resident a scheme:Occupation ;
+    rdfs:label "Rural Resident" .
+
+scheme:category_Agriculture a scheme:Category ;
+    rdfs:label "Agriculture" .
+
+scheme:category_Education a scheme:Category ;
+    rdfs:label "Education" .
+
+scheme:occupation_Farmer a scheme:Occupation ;
+    rdfs:label "Farmer" .
+
+scheme:occupation_Student a scheme:Occupation ;
+    rdfs:label "Student" .
+
+scheme:state_All_States a scheme:State ;
+    rdfs:label "All States" .
+
