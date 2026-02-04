@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}About - Smart Government Scheme Checker{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-info-circle"></i> About This Project</h1>
+    </div>
+
+    <div class="about-content">
+        <section class="about-section">
+            <h2>Project Overview</h2>
+            <p>
+                The <strong>Semantic Web-Based Smart Government Scheme Checker</strong> is a web-based application designed 
+                to help citizens easily find and understand government welfare schemes that are relevant to them. Many government 
+                schemes are scattered across different websites and are often difficult for users to search due to unstructured 
+                data and lack of personalization.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>Technologies Used</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fas fa-project-diagram tech-icon"></i>
+                    <h3>RDF (Resource Description Framework)</h3>
+                    <p>Semantic data model for representing government schemes as interconnected knowledge graphs</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-search tech-icon"></i>
+                    <h3>SPARQL</h3>
+                    <p>Query language for retrieving and manipulating data stored in RDF format</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fab fa-python tech-icon"></i>
+                    <h3>Python & Flask</h3>
+                    <p>Lightweight web framework for building the application backend and API</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-database tech-icon"></i>
+                    <h3>RDFLib</h3>
+                    <p>Python library for working with RDF graphs and executing SPARQL queries</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>How It Works</h2>
+            <div class="workflow">
+                <div class="workflow-step">
+                    <div class="workflow-number">1</div>
+                    <h3>Data Collection</h3>
+                    <p>Government scheme data is collected from various sources and organized in a structured CSV format.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <div class="workflow-number">2</div>
+                    <h3>Ontology Building</h3>
+                    <p>CSV data is converted into RDF triples using a custom ontology that defines classes and properties for schemes.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <div class="workflow-number">3</div>
+                    <h3>Knowledge Graph</h3>
+                    <p>RDF triples form a semantic knowledge graph that represents relationships between schemes and eligibility criteria.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <div class="workflow-number">4</div>
+                    <h3>SPARQL Querying</h3>
+                    <p>User inputs are translated into SPARQL queries that intelligently retrieve matching schemes from the graph.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">
+                    <div class="workflow-number">5</div>
+                    <h3>Results Display</h3>
+                    <p>Relevant schemes are presented to users with complete details and application instructions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Key Features</h2>
+            <ul class="features-list">
+                <li><i class="fas fa-check-circle"></i> <strong>Semantic Intelligence:</strong> Uses RDF and SPARQL to understand data meaning and relationships</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Personalized Search:</strong> Filters schemes based on state, occupation, age, gender, and income</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Comprehensive Information:</strong> Provides eligibility criteria, benefits, required documents, and application process</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Easy to Extend:</strong> New schemes and eligibility rules can be added without changing the code</li>
+                <li><i class="fas fa-check-circle"></i> <strong>User-Friendly Interface:</strong> Clean, modern web interface that works on all devices</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>Ontology Structure</h2>
+            <div class="ontology-box">
+                <h3>Classes</h3>
+                <ul>
+                    <li><code>scheme:Scheme</code> - Represents a government scheme</li>
+                    <li><code>scheme:Category</code> - Scheme category (Agriculture, Education, etc.)</li>
+                    <li><code>scheme:State</code> - Geographic applicability</li>
+                    <li><code>scheme:Occupation</code> - Target occupation groups</li>
+                </ul>
+                <h3>Properties</h3>
+                <ul>
+                    <li><code>scheme:hasCategory</code> - Links scheme to its category</li>
+                    <li><code>scheme:applicableInState</code> - Links scheme to state</li>
+                    <li><code>scheme:requiresOccupation</code> - Occupation eligibility</li>
+                    <li><code>scheme:minAge / maxAge</code> - Age eligibility range</li>
+                    <li><code>scheme:benefits</code> - Scheme benefits description</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Future Enhancements</h2>
+            <ul class="features-list">
+                <li><i class="fas fa-lightbulb"></i> Natural language query support</li>
+                <li><i class="fas fa-lightbulb"></i> Multi-language interface (Hindi, regional languages)</li>
+                <li><i class="fas fa-lightbulb"></i> Integration with government APIs for real-time data</li>
+                <li><i class="fas fa-lightbulb"></i> OWL reasoning for automatic eligibility inference</li>
+                <li><i class="fas fa-lightbulb"></i> Mobile application for wider accessibility</li>
+                <li><i class="fas fa-lightbulb"></i> User accounts to save favorite schemes</li>
+            </ul>
+        </section>
+
+        <section class="about-section cta-box">
+            <h2>Get Started</h2>
+            <p>Ready to discover government schemes you're eligible for?</p>
+            <a href="{{ url_for('search') }}" class="btn btn-primary">
+                <i class="fas fa-search"></i> Search Schemes Now
+            </a>
+        </section>
+    </div>
+</div>
+{% endblock %}

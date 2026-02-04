@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1><i class="fas fa-lightbulb"></i> Smart Government Scheme Checker</h1>
+        <p class="hero-subtitle">Discover government welfare schemes tailored to your needs using Semantic Web technology</p>
+        <a href="{{ url_for('search') }}" class="btn btn-primary btn-large">
+            <i class="fas fa-search"></i> Find Your Schemes
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <section class="features">
+        <h2>Why Use Our Platform?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Semantic Intelligence</h3>
+                <p>Uses RDF knowledge graphs and SPARQL queries to understand the meaning and relationships of scheme data.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>Personalized Results</h3>
+                <p>Get schemes that match your specific profile - state, occupation, age, income, and more.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Comprehensive Database</h3>
+                <p>Access information about multiple government schemes from central and state governments.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Save Time</h3>
+                <p>No more browsing multiple websites. Find all relevant schemes in one place, instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <h2>Platform Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.total_schemes }}</div>
+                <div class="stat-label">Total Schemes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.categories }}</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.states }}</div>
+                <div class="stat-label">States Covered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.occupations }}</div>
+                <div class="stat-label">Occupations</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Enter Your Details</h3>
+                <p>Provide basic information like your state, occupation, age, and income.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Smart Matching</h3>
+                <p>Our semantic engine queries the knowledge graph to find relevant schemes.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Get Results</h3>
+                <p>View personalized scheme recommendations with complete details and application steps.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Find Your Schemes?</h2>
+        <p>Start discovering government welfare schemes that you're eligible for</p>
+        <a href="{{ url_for('search') }}" class="btn btn-primary btn-large">
+            <i class="fas fa-arrow-right"></i> Start Searching
+        </a>
+    </section>
+</div>
+{% endblock %}

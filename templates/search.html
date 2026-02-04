@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block title %}Search Schemes - Smart Government Scheme Checker{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-search"></i> Find Government Schemes</h1>
+        <p>Enter your details below to discover schemes you're eligible for</p>
+    </div>
+
+    <div class="search-container">
+        <form id="searchForm" class="search-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="state">
+                        <i class="fas fa-map-marker-alt"></i> State
+                    </label>
+                    <select id="state" name="state" class="form-control">
+                        {% for state in states %}
+                        <option value="{{ state }}">{{ state }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="occupation">
+                        <i class="fas fa-briefcase"></i> Occupation
+                    </label>
+                    <select id="occupation" name="occupation" class="form-control">
+                        {% for occupation in occupations %}
+                        <option value="{{ occupation }}">{{ occupation }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">
+                        <i class="fas fa-tag"></i> Category
+                    </label>
+                    <select id="category" name="category" class="form-control">
+                        {% for cat in categories %}
+                        <option value="{{ cat }}">{{ cat }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">
+                        <i class="fas fa-user"></i> Age
+                    </label>
+                    <input type="number" id="age" name="age" class="form-control" placeholder="Enter your age" min="0" max="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">
+                        <i class="fas fa-venus-mars"></i> Gender
+                    </label>
+                    <select id="gender" name="gender" class="form-control">
+                        <option value="All">All</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="income">
+                        <i class="fas fa-rupee-sign"></i> Annual Income (₹)
+                    </label>
+                    <input type="number" id="income" name="income" class="form-control" placeholder="Enter annual income" min="0">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Search Schemes
+                </button>
+                <button type="reset" class="btn btn-secondary">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Searching knowledge graph...</p>
+    </div>
+
+    <div id="results" class="results-container" style="display: none;">
+        <div class="results-header">
+            <h2>Search Results</h2>
+            <span id="resultCount" class="result-count"></span>
+        </div>
+        <div id="schemesList" class="schemes-list"></div>
+    </div>
+
+    <div id="noResults" class="no-results" style="display: none;">
+        <i class="fas fa-inbox"></i>
+        <h3>No Schemes Found</h3>
+        <p>No schemes match your current criteria. Try adjusting your filters.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('searchForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Show loading spinner
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('results').style.display = 'none';
+    document.getElementById('noResults').style.display = 'none';
+    
+    // Collect form data
+    const formData = {
+        state: document.getElementById('state').value,
+        occupation: document.getElementById('occupation').value,
+        category: document.getElementById('category').value,
+        age: document.getElementById('age').value,
+        gender: document.getElementById('gender').value,
+        income: document.getElementById('income').value
+    };
+    
+    try {
+        // Make API request
+        const response = await fetch('/api/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const data = await response.json();
+        
+        // Hide loading spinner
+        document.getElementById('loadingSpinner').style.display = 'none';
+        
+        if (data.success && data.schemes.length > 0) {
+            displayResults(data.schemes, data.count);
+        } else {
+            document.getElementById('noResults').style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('loadingSpinner').style.display = 'none';
+        alert('An error occurred while searching. Please try again.');
+    }
+});
+
+function displayResults(schemes, count) {
+    const resultsDiv = document.getElementById('results');
+    const schemesListDiv = document.getElementById('schemesList');
+    const resultCountSpan = document.getElementById('resultCount');
+    
+    resultCountSpan.textContent = `${count} scheme${count !== 1 ? 's' : ''} found`;
+    
+    schemesListDiv.innerHTML = schemes.map(scheme => `
+        <div class="scheme-card">
+            <div class="scheme-header">
+                <h3>${scheme.name}</h3>
+                <span class="scheme-category">${scheme.category}</span>
+            </div>
+            <div class="scheme-body">
+                <div class="scheme-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> ${scheme.state}</span>
+                    <span><i class="fas fa-users"></i> Age: ${scheme.min_age}-${scheme.max_age}</span>
+                    ${scheme.gender !== 'All' ? `<span><i class="fas fa-venus-mars"></i> ${scheme.gender}</span>` : ''}
+                </div>
+                <div class="scheme-benefits">
+                    <h4><i class="fas fa-gift"></i> Benefits</h4>
+                    <p>${scheme.benefits}</p>
+                </div>
+                <div class="scheme-details">
+                    <div class="detail-section">
+                        <h4><i class="fas fa-file-alt"></i> Required Documents</h4>
+                        <p>${scheme.documents.split('|').join(', ')}</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4><i class="fas fa-clipboard-list"></i> Application Process</h4>
+                        <p>${scheme.application_process}</p>
+                    </div>
+                </div>
+                <a href="${scheme.website}" target="_blank" class="btn btn-primary btn-small">
+                    <i class="fas fa-external-link-alt"></i> Visit Official Website
+                </a>
+            </div>
+        </div>
+    `).join('');
+    
+    resultsDiv.style.display = 'block';
+}
+
+// Reset form
+document.getElementById('searchForm').addEventListener('reset', () => {
+    document.getElementById('results').style.display = 'none';
+    document.getElementById('noResults').style.display = 'none';
+});
+</script>
+{% endblock %}
